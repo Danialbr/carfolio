@@ -41,4 +41,10 @@ export const WEB_MIGRATIONS: readonly { readonly tag: string; readonly statement
       "CREATE INDEX `idx_vehicles_vin` ON `vehicles` (`vin`);",
     ],
   },
+  {
+    tag: "0001_oval_pandemic",
+    statements: [
+      "ALTER TABLE `vehicles` ADD `color` text DEFAULT '' NOT NULL;",
+    ],
+  },
 ];

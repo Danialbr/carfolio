@@ -147,13 +147,13 @@ export const Type = {
    * actually looks like on screen.
    */
   size: {
-    display: 24,
-    title: 18,
-    heading: 16,
-    body: 14,
-    small: 13,
-    label: 10,
-    micro: 11,
+    display: 30,
+    title: 22,
+    heading: 18,
+    body: 16,
+    small: 15,
+    label: 12,
+    micro: 12,
   },
 } as const;
 

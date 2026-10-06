@@ -1,0 +1,30 @@
+<style id="azl-css">
+.azl{position:fixed;inset:0;z-index:2147483000;pointer-events:none;overflow:hidden;background:radial-gradient(120% 80% at 50% 110%,rgba(240,138,93,.0),rgba(4,6,11,0) 60%);transition:background .5s}
+.azl.go{background:radial-gradient(120% 80% at 50% 110%,rgba(240,138,93,.45),rgba(4,6,11,.97) 60%)}
+.azl .sp{position:absolute;inset:-50% 0;opacity:0;background:repeating-linear-gradient(90deg,transparent 0 23px,rgba(255,255,255,.18) 23px 24px,transparent 24px 61px),repeating-linear-gradient(180deg,transparent 0 40px,rgba(4,6,11,.95) 40px 140px);transition:opacity .4s .25s}
+.azl.go .sp{opacity:1;animation:azsp .35s linear infinite}
+@keyframes azsp{to{transform:translateY(140px)}}
+.azl .rk{position:absolute;left:50%;bottom:-140px;width:84px;transform:translateX(-50%);transition:bottom 1s cubic-bezier(.55,0,.85,.35)}
+.azl.go .rk{bottom:120%}
+.azl .rk svg{width:84px;height:130px;display:block;filter:drop-shadow(0 0 18px rgba(255,170,90,.6))}
+.azl .fl{transform-origin:50% 0;animation:azfl .08s ease-in-out infinite alternate}
+@keyframes azfl{to{transform:scaleY(1.35) scaleX(.85)}}
+.azl .tx{position:absolute;left:0;right:0;top:44%;text-align:center;font:800 13px/1.4 -apple-system,system-ui,sans-serif;letter-spacing:.32em;color:#F3D58A;opacity:0;transition:opacity .3s .15s}
+.azl .tx b{display:block;font-size:22px;letter-spacing:.12em;color:#fff;margin-top:6px}
+.azl.go .tx{opacity:1}
+.azl.land{background:rgba(4,6,11,.97);transition:opacity .7s .35s}.azl.land.out{opacity:0}
+.azl.land .rk{bottom:auto;top:-160px;transition:top .7s cubic-bezier(.2,.7,.3,1)}.azl.land.in .rk{top:38%}
+</style>
+<script>
+(function(){
+ var RK='<svg viewBox="0 0 84 130"><defs><linearGradient id="azb" x1="0" x2="1"><stop offset="0" stop-color="#dfe5ee"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#c7cfdb"/></linearGradient></defs><g class="fl"><path d="M32 96 Q42 136 52 96Z" fill="#FFB347"/><path d="M36 96 Q42 122 48 96Z" fill="#FFF3C4"/></g><path d="M42 4 C58 18 62 40 60 70 L56 92 H28 L24 70 C22 40 26 18 42 4Z" fill="url(#azb)"/><path d="M42 4 C50 11 55 20 57 30 H27 C29 20 34 11 42 4Z" fill="#C8AA6E"/><circle cx="42" cy="50" r="7" fill="#0AC8B9" stroke="#0d1424" stroke-width="3"/><path d="M26 70 L12 90 L26 88Z M58 70 L72 90 L58 88Z" fill="#E2483B"/><rect x="30" y="90" width="24" height="7" rx="2" fill="#2b2f3a"/></svg>';
+ function el(cls,html){var o=document.createElement('div');o.className='azl '+cls;o.innerHTML='<div class="sp"></div><div class="rk">'+RK+'</div>'+(html||'');document.body.appendChild(o);return o}
+ window.azLaunch=function(url,to){var o=el('','<div class="tx">DESPEGANDO A<b>'+(to||'')+'</b></div>');try{sessionStorage.setItem('az.land','1')}catch(e){}
+  requestAnimationFrame(function(){requestAnimationFrame(function(){o.classList.add('go')})});try{navigator.vibrate&&navigator.vibrate(30)}catch(e){}
+  setTimeout(function(){location.href=url},1050)};
+ function land(){var f;try{f=sessionStorage.getItem('az.land');sessionStorage.removeItem('az.land')}catch(e){}if(!f)return;
+  var o=el('land');requestAnimationFrame(function(){requestAnimationFrame(function(){o.classList.add('in');setTimeout(function(){o.classList.add('out')},450);setTimeout(function(){o.remove()},1300)})})}
+ if(document.body)land();else document.addEventListener('DOMContentLoaded',land);
+ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-launch]');if(!a)return;e.preventDefault();e.stopPropagation();azLaunch(a.getAttribute('href')||a.dataset.href,a.dataset.launch)},true);
+})();
+</script>

@@ -46,11 +46,12 @@ export function makeVehicle(overrides: Partial<Vehicle> = {}): Vehicle {
     status: 'PURCHASED',
     estimatedSalePriceCents: null,
     notes: '',
+    color: '',
     createdAt: TS,
     updatedAt: TS,
     deletedAt: null,
     ...overrides,
-  };
+  } as Vehicle;
 }
 
 export function makeExpense(overrides: Partial<Expense> = {}): Expense {

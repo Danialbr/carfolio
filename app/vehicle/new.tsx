@@ -28,6 +28,7 @@ import {
 import { Field, MoneyField, SelectField, TextField } from '../../components/ui/money';
 import { OptionSheet } from '../../components/ui/Sheet';
 import { ScreenHeader } from '../../components/domain/ScreenHeader';
+import { ColorPicker } from '../../components/domain/ColorPicker';
 import { withRefresh } from '../../state/store';
 import { createVehicle } from '../../db/operations';
 import { todayISO, isValidISODate } from '../../domain/dates';
@@ -56,6 +57,7 @@ export default function NewVehicle() {
   const [paidBy, setPaidBy] = useState<PaidBy>('DANIEL');
   const [estimateCents, setEstimateCents] = useState<Cents>(0);
   const [notes, setNotes] = useState('');
+  const [color, setColor] = useState('');
 
   const [payerSheet, setPayerSheet] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -82,6 +84,7 @@ export default function NewVehicle() {
         purchasePaidBy: paidBy,
         estimatedSalePriceCents: estimateCents > 0 ? estimateCents : null,
         notes: notes.trim(),
+        color,
       }),
     );
 
@@ -167,6 +170,10 @@ export default function NewVehicle() {
               />
             </Field>
           </Row>
+
+          <Field label="Color" hint="Se ve en la tarjeta del garage y en Arizona">
+            <ColorPicker value={color} onChange={setColor} />
+          </Field>
 
           <Field
             label="Vehicle type"

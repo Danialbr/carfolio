@@ -66,6 +66,7 @@ export interface NewVehicleInput {
   purchasePaidBy: PaidBy;
   estimatedSalePriceCents: Cents | null;
   notes: string;
+  color?: string;
 }
 
 /**
@@ -100,6 +101,7 @@ export function createVehicle(db: Db, input: NewVehicleInput): OperationResult<V
     status: 'PURCHASED',
     estimatedSalePriceCents: input.estimatedSalePriceCents,
     notes: input.notes,
+    color: input.color ?? '',
     createdAt: now,
     updatedAt: now,
     deletedAt: null,
@@ -229,6 +231,12 @@ export function deleteExpense(db: Db, expenseId: string): OperationResult {
 }
 
 // ─── Vehicle status ─────────────────────────────────────────────────────────
+
+/** Paint colour is cosmetic: it never touches money, so it can change any time. */
+export function setVehicleColor(db: Db, vehicleId: string, color: string): OperationResult {
+  db.update(t.vehicles).set({ color, updatedAt: nowTimestamp() }).where(eq(t.vehicles.id, vehicleId)).run();
+  return success(undefined);
+}
 
 export function setVehicleStatus(
   db: Db,

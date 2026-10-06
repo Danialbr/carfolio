@@ -65,7 +65,7 @@ const HEAD = `
       input, textarea { -webkit-user-select: text; user-select: text; }
     </style>
     <style>
-      .az-rocket{position:fixed;top:calc(env(safe-area-inset-top) + 10px);right:12px;z-index:9999;width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(14,19,28,.85);border:1px solid rgba(200,170,110,.5);color:#C8AA6E;text-decoration:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+      .az-rocket{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 92px);right:14px;z-index:9999;width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(14,19,28,.85);border:1px solid rgba(200,170,110,.5);color:#C8AA6E;text-decoration:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
       .az-rocket svg{width:20px;height:20px}
     </style>
     <script>
@@ -73,7 +73,7 @@ const HEAD = `
       if (location.pathname.indexOf('/Orbit/') === 0) {
         document.addEventListener('DOMContentLoaded', function () {
           var a = document.createElement('a');
-          a.className = 'az-rocket'; a.href = '${BASE.replace(/\/carfolio$/, '')}/arizona/'; a.setAttribute('aria-label', 'Arizona Industries');
+          a.className = 'az-rocket'; a.setAttribute('data-launch', 'ARIZONA'); a.href = '${BASE.replace(/\/carfolio$/, '')}/arizona/'; a.setAttribute('aria-label', 'Arizona Industries');
           a.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 2.5 4.5 6 4.5 10.5L14 16h-4l-2.5-3.5C7.5 8 9 4.5 12 2z"/><circle cx="12" cy="9" r="1.6"/><path d="M10 16l-1 5 3-2 3 2-1-5"/><path d="M7.5 12.5L4.5 15l3 1M16.5 12.5l3 2.5-3 1"/></svg>';
           document.body.appendChild(a);
         });
@@ -94,6 +94,8 @@ let html = readFileSync(OUT, 'utf8');
 // app off the very edges of the screen once installed.
 html = html.replace(/\n\s*<meta name="viewport"[^>]*\/>/, '');
 html = html.replace('</head>', `${HEAD}  </head>`);
+// The rocket launch / landing animation shared by Orbit, Carfolio and Arizona.
+html = html.replace('</body>', `${readFileSync('scripts/launch.html', 'utf8')}</body>`);
 
 writeFileSync(OUT, html);
 // GitHub Pages answers unknown paths (a reload on /vehicle/123) with 404.html.

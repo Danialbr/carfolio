@@ -78,6 +78,7 @@ export function toVehicle(row: Row<typeof vehicles>): Vehicle {
     status: asVehicleStatus(row.status),
     estimatedSalePriceCents: row.estimatedSalePriceCents,
     notes: row.notes,
+    color: row.color ?? '',
     createdAt: row.createdAt,
     updatedAt: row.updatedAt,
     deletedAt: row.deletedAt,

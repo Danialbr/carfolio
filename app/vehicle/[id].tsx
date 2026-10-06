@@ -34,9 +34,11 @@ import { OptionSheet } from '../../components/ui/Sheet';
 import { ScreenHeader } from '../../components/domain/ScreenHeader';
 import { StatusPill, TypePill } from '../../components/domain/VehicleCard';
 import { ExpenseSheet } from '../../components/domain/ExpenseSheet';
+import { ColorPicker } from '../../components/domain/ColorPicker';
+import { HoloCar } from '../../components/domain/VehicleCard';
 import { confirm, notify } from '../../components/ui/dialog';
 import { useApp, selectVehicle, withRefresh } from '../../state/store';
-import { deleteExpense, reverseSale, setVehicleStatus } from '../../db/operations';
+import { deleteExpense, reverseSale, setVehicleColor, setVehicleStatus } from '../../db/operations';
 import * as reposModule from '../../db/repos';
 import { categoryLabel } from '../../domain/categories';
 import { formatDate, formatDayCount, formatShortDate } from '../../domain/dates';
@@ -402,6 +404,20 @@ export default function VehicleDetail() {
               </Txt>
             </>
           ) : null}
+        </Card>
+
+        {/* ── Paint colour: the garage card and Arizona use it ─────────── */}
+        <Card style={{ marginBottom: Space.lg }}>
+          <HoloCar color={vehicle.color} height={130} />
+          <Txt variant="micro" tone="faint" style={{ marginTop: Space.md, marginBottom: Space.xs }}>
+            COLOR
+          </Txt>
+          <ColorPicker
+            value={vehicle.color}
+            onChange={(c) => {
+              withRefresh((db) => setVehicleColor(db, vehicle.id, c));
+            }}
+          />
         </Card>
 
         {/* ── Actions ─────────────────────────────────────────────────── */}

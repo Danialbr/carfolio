@@ -8,7 +8,8 @@
  */
 
 import React from 'react';
-import { View } from 'react-native';
+import { Image, Platform, View } from 'react-native';
+import { Asset } from 'expo-asset';
 import { Ionicons } from '@expo/vector-icons';
 
 import { Colors, Space } from '../../theme';
@@ -18,6 +19,37 @@ import { formatDayCount } from '../../domain/dates';
 import { STATUS_LABELS, TYPE_LABELS, vehicleTitle, vinShort } from '../../domain/vehicle';
 import type { VehicleWithFinancials } from '../../domain/analytics';
 import type { VehicleStatus } from '../../domain/types';
+import { paintColor } from '../../domain/colors';
+
+const HOLO = require('../../assets/holo-car.webp');
+
+/**
+ * The holographic car from Orbit's garage card, recoloured to the car's paint.
+ * A CSS filter on the web build; the photo itself is never altered.
+ */
+export function HoloCar({ color, height = 150 }: { color: string; height?: number }) {
+  const paint = paintColor(color);
+  return (
+    <View style={{ height, borderRadius: 10, overflow: 'hidden', backgroundColor: '#000', marginBottom: Space.md }}>
+      {Platform.OS === 'web' ? (
+        React.createElement('img', {
+          src: Asset.fromModule(HOLO).uri,
+          alt: '',
+          style: { width: '100%', height: '100%', objectFit: 'contain', filter: paint?.filter ?? 'none' },
+        })
+      ) : (
+        <Image source={HOLO} resizeMode="contain" style={{ width: '100%', height: '100%' }} />
+      )}
+      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 3, backgroundColor: paint?.hex ?? Colors.brand, opacity: 0.85 }} />
+      {paint ? (
+        <View style={{ position: 'absolute', top: 8, right: 8, flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: 'rgba(0,0,0,.55)', paddingHorizontal: 8, paddingVertical: 3, borderRadius: 10 }}>
+          <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: paint.hex, borderWidth: 1, borderColor: 'rgba(255,255,255,.4)' }} />
+          <Txt variant="micro" tone="muted">{paint.label}</Txt>
+        </View>
+      ) : null}
+    </View>
+  );
+}
 
 const STATUS_TONE: Record<VehicleStatus, BadgeTone> = {
   PURCHASED: 'neutral',
@@ -64,6 +96,7 @@ export function GarageCard({ row, onPress }: { row: VehicleWithFinancials; onPre
 
   return (
     <PressableCard onPress={onPress} accessibilityLabel={vehicleTitle(row.vehicle)}>
+      <HoloCar color={row.vehicle.color} />
       <Header row={row} />
 
       <View style={{ height: 1, backgroundColor: Colors.border, marginVertical: Space.md }} />

@@ -90,7 +90,7 @@ describe('speaking up when there is something to lose', () => {
         {
           id: 'v1', year: 2018, make: 'Toyota', model: 'Camry', trim: '', vin: '',
           mileageIn: 1000, mileageOut: null, purchaseDate: '2026-06-05', saleDate: null,
-          type: 'MYSELF', status: 'PURCHASED', estimatedSalePriceCents: null, notes: '',
+          type: 'MYSELF', status: 'PURCHASED', estimatedSalePriceCents: null, notes: '', color: '',
           ...AUDIT,
         } satisfies Vehicle,
       ],

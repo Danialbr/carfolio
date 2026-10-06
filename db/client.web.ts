@@ -209,10 +209,10 @@ function writeWorldSummary(db: SqlJsDatabase): void {
     const rows = (sql: string): Record<string, unknown>[] => {
       const r = db.exec(sql);
       if (!r.length) return [];
-      const { columns, values } = r[0];
-      return values.map((v) => Object.fromEntries(columns.map((c, i) => [c, v[i]])));
+      const { columns, values } = r[0]!;
+      return values.map((v: unknown[]) => Object.fromEntries(columns.map((c: string, i: number) => [c, v[i]])));
     };
-    const vehicles = rows(`SELECT v.id, v.year, v.make, v.model, v.trim, v.status, v.type, v.purchase_date AS purchaseDate,
+    const vehicles = rows(`SELECT v.id, v.year, v.make, v.model, v.trim, v.status, v.type, v.color, v.purchase_date AS purchaseDate,
         v.estimated_sale_price_cents AS estCents,
         COALESCE((SELECT SUM(e.amount_cents) FROM expenses e WHERE e.vehicle_id = v.id AND e.deleted_at IS NULL AND e.category_id = 'PURCHASE_PRICE'), 0) AS buyCents,
         COALESCE((SELECT SUM(e.amount_cents) FROM expenses e WHERE e.vehicle_id = v.id AND e.deleted_at IS NULL AND e.category_id <> 'PURCHASE_PRICE'), 0) AS extraCents
@@ -221,7 +221,16 @@ function writeWorldSummary(db: SqlJsDatabase): void {
       FROM sales s WHERE s.deleted_at IS NULL`);
     const expenses = rows(`SELECT e.vehicle_id AS vehicleId, e.category_id AS category, e.description, e.amount_cents AS cents, e.date
       FROM expenses e WHERE e.deleted_at IS NULL AND e.category_id <> 'PURCHASE_PRICE' ORDER BY e.date DESC LIMIT 20`);
-    localStorage.setItem('carfolio.world', JSON.stringify({ v: 1, at: new Date().toISOString(), vehicles, sales, expenses }));
+    const one = (sql: string): number => Number((rows(sql)[0]?.n as number | null) ?? 0);
+    const totals = {
+      contributedCents: one(`SELECT SUM(amount_cents) AS n FROM capital_events WHERE deleted_at IS NULL AND kind = 'CONTRIBUTION'`),
+      withdrawnCents: one(`SELECT SUM(amount_cents) AS n FROM capital_events WHERE deleted_at IS NULL AND kind = 'WITHDRAWAL'`),
+      distributedCents: one(`SELECT SUM(amount_cents) AS n FROM distributions WHERE deleted_at IS NULL`),
+      owedToFernandoCents: one(`SELECT SUM(amount_cents) AS n FROM fernando_entries WHERE deleted_at IS NULL`),
+      inventoryItems: one(`SELECT COUNT(*) AS n FROM inventory_items WHERE deleted_at IS NULL AND quantity > 0`),
+      inventoryValueCents: one(`SELECT SUM(quantity * unit_cost_cents) AS n FROM inventory_items WHERE deleted_at IS NULL`),
+    };
+    localStorage.setItem('carfolio.world', JSON.stringify({ v: 2, at: new Date().toISOString(), vehicles, sales, expenses, totals }));
   } catch {
     // The world is a nice-to-have; never let it break a save.
   }

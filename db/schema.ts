@@ -40,6 +40,8 @@ export const vehicles = sqliteTable(
     status: text('status').notNull().default('PURCHASED'),
     estimatedSalePriceCents: integer('estimated_sale_price_cents'),
     notes: text('notes').notNull().default(''),
+    /** Paint colour id (see domain/colors.ts). Shown on the garage card and in Arizona. */
+    color: text('color').notNull().default(''),
     ...auditColumns,
   },
   (t) => [

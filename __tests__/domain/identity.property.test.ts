@@ -100,6 +100,7 @@ function runScenario(ops: readonly Op[]) {
           type: op.type,
           status: 'PURCHASED',
           estimatedSalePriceCents: null,
+    color: '',
           notes: '',
           createdAt: NOW,
           updatedAt: NOW,

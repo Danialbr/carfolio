@@ -46,6 +46,8 @@ export interface Vehicle {
   /** Optional target, used for estimated profit in the Garage. */
   estimatedSalePriceCents: Cents | null;
   notes: string;
+  /** Paint colour id from domain/colors.ts; '' when not set. */
+  color: string;
   createdAt: ISOTimestamp;
   updatedAt: ISOTimestamp;
   deletedAt: ISOTimestamp | null;

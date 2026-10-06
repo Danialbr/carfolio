@@ -13,7 +13,7 @@
  */
 
 import React, { useMemo, useState } from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -63,7 +63,10 @@ export default function Dashboard() {
     <Screen>
       <Row style={{ justifyContent: 'space-between', marginBottom: Space.lg }}>
         <View>
-          <Txt variant="display">Carfolio</Txt>
+          <Row gap={10} style={{ alignItems: 'center' }}>
+            <Image source={require('../../assets/logo-mark.png')} style={{ width: 44, height: 44 }} />
+            <Txt variant="display">Carfolio</Txt>
+          </Row>
           <Txt variant="small" tone="faint" style={{ marginTop: 4 }}>
             {hasData
               ? `${summary.totalVehicles} ${summary.totalVehicles === 1 ? 'vehicle' : 'vehicles'} · ${summary.vehiclesInGarage} in the garage`
