@@ -64,7 +64,7 @@ export default function Dashboard() {
       <Row style={{ justifyContent: 'space-between', marginBottom: Space.lg }}>
         <View>
           <Row gap={10} style={{ alignItems: 'center' }}>
-            <Image source={require('../../assets/logo-mark.png')} style={{ width: 78, height: 41 }} />
+            <Image testID="cf-logo" source={require('../../assets/logo-mark.png')} style={{ width: 78, height: 41 }} />
             <Txt variant="display">Carfolio</Txt>
           </Row>
           <Txt variant="small" tone="faint" style={{ marginTop: 4 }}>

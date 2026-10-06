@@ -108,6 +108,9 @@ html = html.replace(/<body([^>]*)>/, `<body$1>${readFileSync('scripts/splash.htm
 // The rocket launch / landing animation shared by Orbit, Carfolio and Arizona.
 html = html.replace('</body>', `${readFileSync('scripts/launch.html', 'utf8')}</body>`);
 
+// Inside Orbit's window env() reads 0 in a frame, so the real insets arrive as variables.
+const SAV = { top: '--sat', right: '--sar', bottom: '--sab', left: '--sal' };
+html = html.replace(/env\(safe-area-inset-(top|right|bottom|left)(,[^)]*)?\)/g, (m, side) => `var(${SAV[side]},${m})`);
 writeFileSync(OUT, html);
 // GitHub Pages answers unknown paths (a reload on /vehicle/123) with 404.html.
 writeFileSync('dist/404.html', html);
