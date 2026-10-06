@@ -44,7 +44,7 @@ const HEAD = `
        * instead and the app fills whatever box that turns out to be.
        */
       html { height: 100%; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-      body { position: fixed; top: 0; right: 0; bottom: 0; left: 0; height: auto !important; width: auto; }
+      body { position: fixed; top: 0; right: 0; left: 0; bottom: auto; height: var(--app-h, 100%) !important; width: auto; }
       #root { height: 100% !important; width: 100%; min-height: 0; }
       /*
        * The safe area, handled here rather than in the app.
@@ -74,7 +74,7 @@ const HEAD = `
       input, textarea { -webkit-user-select: text; user-select: text; }
     </style>
     <style>
-      .az-rocket{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 92px);right:14px;z-index:9999;width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(14,19,28,.85);border:1px solid rgba(200,170,110,.5);color:#C8AA6E;text-decoration:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+      .az-rocket{position:fixed;top:calc(env(safe-area-inset-top) + 10px);right:14px;z-index:9999;width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(14,19,28,.85);border:1px solid rgba(200,170,110,.5);color:#C8AA6E;text-decoration:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
       .az-rocket svg{width:20px;height:20px}
     </style>
     <script>
@@ -102,7 +102,9 @@ let html = readFileSync(OUT, 'utf8');
 // Expo's own viewport tag has no viewport-fit=cover, which is what keeps the
 // app off the very edges of the screen once installed.
 html = html.replace(/\n\s*<meta name="viewport"[^>]*\/>/, '');
-html = html.replace('</head>', `${HEAD}  </head>`);
+html = html.replace('</head>', `${readFileSync('scripts/fit.html', 'utf8')}${HEAD}  </head>`);
+// Arrival screen: a flying car until the app has drawn its first screen.
+html = html.replace(/<body([^>]*)>/, `<body$1>${readFileSync('scripts/splash.html', 'utf8')}`);
 // The rocket launch / landing animation shared by Orbit, Carfolio and Arizona.
 html = html.replace('</body>', `${readFileSync('scripts/launch.html', 'utf8')}</body>`);
 

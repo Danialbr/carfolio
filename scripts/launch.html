@@ -1,29 +1,37 @@
 <style id="azl-css">
-.azl{position:fixed;inset:0;z-index:2147483000;pointer-events:none;overflow:hidden;background:radial-gradient(120% 80% at 50% 110%,rgba(240,138,93,.0),rgba(4,6,11,0) 60%);transition:background .5s}
+.azl{position:fixed;inset:0;z-index:2147483000;pointer-events:none;overflow:hidden;background:radial-gradient(120% 80% at 50% 110%,rgba(240,138,93,.0),rgba(4,6,11,0) 60%);transition:background .7s ease}
 .azl.go{background:radial-gradient(120% 80% at 50% 110%,rgba(240,138,93,.45),rgba(4,6,11,.97) 60%)}
-.azl .sp{position:absolute;inset:-50% 0;opacity:0;background:repeating-linear-gradient(90deg,transparent 0 23px,rgba(255,255,255,.18) 23px 24px,transparent 24px 61px),repeating-linear-gradient(180deg,transparent 0 40px,rgba(4,6,11,.95) 40px 140px);transition:opacity .4s .25s}
+.azl.car.go{background:radial-gradient(120% 80% at 50% 110%,rgba(167,139,250,.45),rgba(4,6,11,.97) 60%)}
+.azl .sp{position:absolute;inset:-50% 0;opacity:0;background:repeating-linear-gradient(90deg,transparent 0 23px,rgba(255,255,255,.18) 23px 24px,transparent 24px 61px),repeating-linear-gradient(180deg,transparent 0 40px,rgba(4,6,11,.95) 40px 140px);transition:opacity .5s .35s}
 .azl.go .sp{opacity:1;animation:azsp .35s linear infinite}
 @keyframes azsp{to{transform:translateY(140px)}}
-.azl .rk{position:absolute;left:50%;bottom:-140px;width:84px;transform:translateX(-50%);transition:bottom 1s cubic-bezier(.55,0,.85,.35)}
+.azl .rk{position:absolute;left:50%;bottom:-160px;width:84px;transform:translateX(-50%);transition:bottom 1.35s cubic-bezier(.6,0,.8,.3) .2s}
 .azl.go .rk{bottom:120%}
 .azl .rk svg{width:84px;height:130px;display:block;filter:drop-shadow(0 0 18px rgba(255,170,90,.6))}
+.azl.car .rk{width:150px}.azl.car .rk svg{width:150px;height:96px;filter:drop-shadow(0 0 20px rgba(167,139,250,.75))}
 .azl .fl{transform-origin:50% 0;animation:azfl .08s ease-in-out infinite alternate}
 @keyframes azfl{to{transform:scaleY(1.35) scaleX(.85)}}
-.azl .tx{position:absolute;left:0;right:0;top:44%;text-align:center;font:800 13px/1.4 -apple-system,system-ui,sans-serif;letter-spacing:.32em;color:#F3D58A;opacity:0;transition:opacity .3s .15s}
+.azl .hv{transform-origin:50% 0;animation:azhv .12s ease-in-out infinite alternate}
+@keyframes azhv{to{transform:scaleY(1.5);opacity:.6}}
+.azl .tx{position:absolute;left:0;right:0;top:44%;text-align:center;font:800 13px/1.4 -apple-system,system-ui,sans-serif;letter-spacing:.32em;color:#F3D58A;opacity:0;transform:translateY(8px);transition:opacity .4s .2s,transform .5s .2s}
+.azl.car .tx{color:#C4B5FD}
 .azl .tx b{display:block;font-size:22px;letter-spacing:.12em;color:#fff;margin-top:6px}
-.azl.go .tx{opacity:1}
-.azl.land{background:rgba(4,6,11,.97);transition:opacity .7s .35s}.azl.land.out{opacity:0}
-.azl.land .rk{bottom:auto;top:-160px;transition:top .7s cubic-bezier(.2,.7,.3,1)}.azl.land.in .rk{top:38%}
+.azl.go .tx{opacity:1;transform:none}
+.azl.land{background:rgba(4,6,11,.97);transition:opacity .8s ease .2s}.azl.land.out{opacity:0}
+.azl.land .rk{bottom:auto;top:-170px;transition:top .9s cubic-bezier(.2,.7,.3,1)}.azl.land.in .rk{top:38%}
 </style>
 <script>
 (function(){
  var RK='<svg viewBox="0 0 84 130"><defs><linearGradient id="azb" x1="0" x2="1"><stop offset="0" stop-color="#dfe5ee"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#c7cfdb"/></linearGradient></defs><g class="fl"><path d="M32 96 Q42 136 52 96Z" fill="#FFB347"/><path d="M36 96 Q42 122 48 96Z" fill="#FFF3C4"/></g><path d="M42 4 C58 18 62 40 60 70 L56 92 H28 L24 70 C22 40 26 18 42 4Z" fill="url(#azb)"/><path d="M42 4 C50 11 55 20 57 30 H27 C29 20 34 11 42 4Z" fill="#C8AA6E"/><circle cx="42" cy="50" r="7" fill="#0AC8B9" stroke="#0d1424" stroke-width="3"/><path d="M26 70 L12 90 L26 88Z M58 70 L72 90 L58 88Z" fill="#E2483B"/><rect x="30" y="90" width="24" height="7" rx="2" fill="#2b2f3a"/></svg>';
- function el(cls,html){var o=document.createElement('div');o.className='azl '+cls;o.innerHTML='<div class="sp"></div><div class="rk">'+RK+'</div>'+(html||'');document.body.appendChild(o);return o}
- window.azLaunch=function(url,to){var o=el('','<div class="tx">DESPEGANDO A<b>'+(to||'')+'</b></div>');try{sessionStorage.setItem('az.land','1')}catch(e){}
+ var CAR='<svg viewBox="0 0 150 96"><defs><linearGradient id="azc" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#E9E3FF"/><stop offset=".55" stop-color="#A78BFA"/><stop offset="1" stop-color="#5B45B0"/></linearGradient></defs><g class="hv"><path d="M30 62 Q38 92 46 62Z" fill="#7CF2E6"/><path d="M104 62 Q112 92 120 62Z" fill="#7CF2E6"/><path d="M34 62 Q38 80 42 62Z M108 62 Q112 80 116 62Z" fill="#fff"/></g><path d="M8 52 C10 40 26 36 44 34 L58 18 C64 12 72 10 84 10 L100 10 C110 10 116 14 122 22 L130 34 C140 36 146 42 146 50 L144 58 C144 62 140 64 136 64 L14 64 C10 64 8 60 8 56Z" fill="url(#azc)"/><path d="M62 20 C66 16 72 15 82 15 L84 15 L84 33 L50 33Z" fill="#140C28"/><path d="M90 15 L100 15 C108 15 112 18 116 24 L122 33 L90 33Z" fill="#140C28"/><rect x="130" y="40" width="12" height="5" rx="2.5" fill="#FFF3C4"/><rect x="9" y="42" width="8" height="5" rx="2.5" fill="#FF4D6D"/><path d="M14 56 H136" stroke="#0AC8B9" stroke-width="2" opacity=".8"/><path d="M28 64 h20 v4 h-20z M102 64 h20 v4 h-20z" fill="#2b2f3a"/></svg>';
+ function el(cls,html){var car=/car/.test(cls);var o=document.createElement('div');o.className='azl '+cls;o.innerHTML='<div class="sp"></div><div class="rk">'+(car?CAR:RK)+'</div>'+(html||'');document.body.appendChild(o);return o}
+ window.azLaunch=function(url,to){var car=/carfolio/i.test(to||'')||/carfolio/i.test(url||'');var o=el(car?'car':'','<div class="tx">'+(car?'VOLANDO A':'DESPEGANDO A')+'<b>'+(to||'')+'</b></div>');try{sessionStorage.setItem('az.land',car?'car':'rk')}catch(e){}
   requestAnimationFrame(function(){requestAnimationFrame(function(){o.classList.add('go')})});try{navigator.vibrate&&navigator.vibrate(30)}catch(e){}
-  setTimeout(function(){location.href=url},1050)};
+  setTimeout(function(){location.href=url},1500)};
  function land(){var f;try{f=sessionStorage.getItem('az.land');sessionStorage.removeItem('az.land')}catch(e){}if(!f)return;
-  var o=el('land');requestAnimationFrame(function(){requestAnimationFrame(function(){o.classList.add('in');setTimeout(function(){o.classList.add('out')},450);setTimeout(function(){o.remove()},1300)})})}
+  if(document.getElementById('cf-splash'))return; /* Carfolio has its own arrival screen */
+  var o=el('land'+(f==='car'?' car':''));requestAnimationFrame(function(){requestAnimationFrame(function(){o.classList.add('in');setTimeout(function(){o.classList.add('out')},750)
+  ;setTimeout(function(){o.remove()},1800)})})}
  if(document.body)land();else document.addEventListener('DOMContentLoaded',land);
  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-launch]');if(!a)return;e.preventDefault();e.stopPropagation();azLaunch(a.getAttribute('href')||a.dataset.href,a.dataset.launch)},true);
 })();

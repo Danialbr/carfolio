@@ -13,7 +13,7 @@
  */
 
 import React, { useEffect } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, Platform, View } from 'react-native';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -86,6 +86,14 @@ export default function RootLayout() {
       cancelled = true;
     };
   }, [attach, setStatus]);
+
+  // Web: tell the arrival screen (injected by the web build) that the app is on screen.
+  const settled = (fontsLoaded || fontError != null) && (status === 'ready' || status === 'failed');
+  useEffect(() => {
+    if (Platform.OS !== 'web' || !settled || typeof window === 'undefined') return;
+    (window as unknown as { __cfReady?: boolean }).__cfReady = true;
+    window.dispatchEvent(new Event('carfolio-ready'));
+  }, [settled]);
 
   if (status === 'failed') {
     return (

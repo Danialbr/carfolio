@@ -8,7 +8,7 @@
  */
 
 import React, { useMemo, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, Platform, View } from 'react-native';
 import { useRouter } from 'expo-router';
 
 import { Space } from '../../theme';
@@ -45,7 +45,7 @@ export default function Garage() {
   return (
     <Screen scroll={false}>
       <View style={{ marginBottom: Space.lg }}>
-        <Row style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
+        <Row style={{ justifyContent: 'space-between', alignItems: 'flex-end', paddingRight: Platform.OS === 'web' ? 50 : 0 }}>
           <View>
             <Txt variant="title">Garage</Txt>
             <Txt variant="small" tone="faint" style={{ marginTop: 4 }}>
