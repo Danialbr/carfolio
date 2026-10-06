@@ -38,6 +38,15 @@ const HEAD = `
     <style>
       html, body, #root { background-color: #000000; color-scheme: dark; }
       /*
+       * Fit the real screen on iOS. height:100% on html is not the screen in an
+       * installed app on every iOS version (it leaves a strip, or runs under the
+       * home bar), so the body is pinned to the four edges of the viewport
+       * instead and the app fills whatever box that turns out to be.
+       */
+      html { height: 100%; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+      body { position: fixed; top: 0; right: 0; bottom: 0; left: 0; height: auto !important; width: auto; }
+      #root { height: 100% !important; width: 100%; min-height: 0; }
+      /*
        * The safe area, handled here rather than in the app.
        *
        * Installed on an iPhone with a black-translucent status bar, the page
