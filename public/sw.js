@@ -11,7 +11,7 @@
  * background so a redeploy is picked up on the next launch rather than never.
  */
 
-const CACHE_VERSION = 'carfolio-v8';
+const CACHE_VERSION = 'carfolio-v9';
 
 // Everything needed to open with no network at all. The rest of the bundle is
 // added to the cache as it is requested.
@@ -39,18 +39,27 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
 
+  // The page itself: network first. A cached page names the hashed bundle and
+  // fonts of an older build, and once that build is gone from the server the
+  // app opens with boxes instead of icons. The cache is only the offline answer.
   if (request.mode === 'navigate') {
     event.respondWith(
       (async () => {
         const cache = await caches.open(CACHE_VERSION);
-        const cached = await cache.match('./index.html');
-        const network = fetch(request)
-          .then((response) => {
-            if (response.ok) cache.put('./index.html', response.clone());
+        try {
+          const response = await Promise.race([
+            fetch(request, { cache: 'no-store' }),
+            new Promise((_, reject) => setTimeout(() => reject(new Error('slow')), 4000)),
+          ]);
+          if (response.ok) {
+            cache.put('./index.html', response.clone());
             return response;
-          })
-          .catch(() => null);
-        return cached ?? (await network) ?? Response.error();
+          }
+          // A deep link (/garage) is a 404 on a static host: the app shell answers it.
+          return (await cache.match('./index.html')) ?? response;
+        } catch {
+          return (await cache.match('./index.html')) ?? Response.error();
+        }
       })(),
     );
     return;

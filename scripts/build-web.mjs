@@ -13,7 +13,7 @@
  */
 
 import { execSync } from 'node:child_process';
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 
 // Where the app is served from. GitHub Pages puts it under a folder, not the
 // root, so every absolute path has to carry it. Set in app.json experiments.baseUrl.
@@ -104,7 +104,11 @@ let html = readFileSync(OUT, 'utf8');
 html = html.replace(/\n\s*<meta name="viewport"[^>]*\/>/, '');
 html = html.replace('</head>', `${readFileSync('scripts/fit.html', 'utf8')}${HEAD}  </head>`);
 // Arrival screen: a flying car until the app has drawn its first screen.
-html = html.replace(/<body([^>]*)>/, `<body$1>${readFileSync('scripts/splash.html', 'utf8')}`);
+// The wordmark face for the arrival screen, from the hashed copy the export just wrote.
+const findFont = (dir) => { for (const e of readdirSync(dir, { withFileTypes: true })) { const p = `${dir}/${e.name}`; if (e.isDirectory()) { const r = findFont(p); if (r) return r; } else if (/^Michroma_400Regular.*\.ttf$/.test(e.name)) return p; } return null; };
+const brandFont = findFont('dist/assets');
+const brandFace = brandFont ? `<style>@font-face{font-family:'CarfolioBrand';src:url('${BASE}/${brandFont.slice('dist/'.length)}') format('truetype');font-display:block}</style>` : '';
+html = html.replace(/<body([^>]*)>/, `<body$1>${brandFace}${readFileSync('scripts/splash.html', 'utf8')}`);
 // The rocket launch / landing animation shared by Orbit, Carfolio and Arizona.
 html = html.replace('</body>', `${readFileSync('scripts/launch.html', 'utf8')}</body>`);
 

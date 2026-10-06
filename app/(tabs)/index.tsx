@@ -13,7 +13,7 @@
  */
 
 import React, { useMemo, useState } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Platform } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -62,17 +62,17 @@ export default function Dashboard() {
   return (
     <Screen>
       <Row style={{ justifyContent: 'space-between', marginBottom: Space.lg }}>
-        <View>
-          <Row gap={10} style={{ alignItems: 'center' }}>
-            <Image testID="cf-logo" source={require('../../assets/logo-mark.png')} style={{ width: 78, height: 41 }} />
-            <Txt variant="display">Carfolio</Txt>
-          </Row>
-          <Txt variant="small" tone="faint" style={{ marginTop: 4 }}>
-            {hasData
-              ? `${summary.totalVehicles} ${summary.totalVehicles === 1 ? 'vehicle' : 'vehicles'} · ${summary.vehiclesInGarage} in the garage`
-              : 'Vehicle investment portfolio'}
-          </Txt>
-        </View>
+        <Row gap={14} style={{ alignItems: 'center', flex: 1, paddingRight: Platform.OS === 'web' ? 50 : 0 }}>
+          <Image testID="cf-logo" source={require('../../assets/logo-mark.png')} style={{ width: 92, height: 48 }} />
+          <View style={{ flex: 1 }}>
+            <Txt variant="display" numberOfLines={1} adjustsFontSizeToFit>Carfolio</Txt>
+            <Txt variant="micro" tone="faint" style={{ marginTop: 4, letterSpacing: 0.4 }}>
+              {hasData
+                ? `${summary.totalVehicles} ${summary.totalVehicles === 1 ? 'vehicle' : 'vehicles'} · ${summary.vehiclesInGarage} in the garage`
+                : 'Vehicle investment portfolio'}
+            </Txt>
+          </View>
+        </Row>
       </Row>
 
       {/* A discrepancy here means a dollar has gone missing somewhere in the

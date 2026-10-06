@@ -30,6 +30,7 @@ import {
   Inter_600SemiBold,
 } from '@expo-google-fonts/inter';
 import { RobotoMono_400Regular, RobotoMono_500Medium } from '@expo-google-fonts/roboto-mono';
+import { Michroma_400Regular } from '@expo-google-fonts/michroma';
 import { Ionicons } from '@expo/vector-icons';
 
 import { migrateDatabase, openDatabase, prepareDatabase } from '../db/client';
@@ -41,6 +42,7 @@ export default function RootLayout() {
   // Three families, three jobs: serif for titles, grotesque for the interface,
   // monospace for labels and figures that sit in columns.
   const [fontsLoaded, fontError] = useFonts({
+    Michroma_400Regular,
     JetBrainsMono_200ExtraLight,
     JetBrainsMono_300Light,
     JetBrainsMono_500Medium,

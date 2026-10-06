@@ -119,8 +119,10 @@ export const Type = {
    * an instrument panel rather than a magazine. A serif title read as classic
    * and, at small sizes on a phone, as cheap. This does not.
    */
+  /** The wordmark and screen titles: wide and mechanical, the same register as the holographic car. */
+  brand: face('Michroma_400Regular', SANS_STACK),
   display: {
-    light: face('JetBrainsMono_200ExtraLight', MONO_STACK),
+    light: face('JetBrainsMono_300Light', MONO_STACK),
     regular: face('JetBrainsMono_300Light', MONO_STACK),
     medium: face('JetBrainsMono_500Medium', MONO_STACK),
   },
@@ -134,10 +136,10 @@ export const Type = {
    * the single change that stops the figures looking like a scoreboard.
    */
   family: {
-    regular: face('Inter_300Light', SANS_STACK),
-    medium: face('Inter_400Regular', SANS_STACK),
+    regular: face('Inter_400Regular', SANS_STACK),
+    medium: face('Inter_500Medium', SANS_STACK),
     semibold: face('Inter_500Medium', SANS_STACK),
-    bold: face('Inter_500Medium', SANS_STACK),
+    bold: face('Inter_600SemiBold', SANS_STACK),
     extrabold: face('Inter_600SemiBold', SANS_STACK),
   },
   /**
@@ -147,8 +149,8 @@ export const Type = {
    * actually looks like on screen.
    */
   size: {
-    display: 30,
-    title: 22,
+    display: 24,
+    title: 19,
     heading: 18,
     body: 16,
     small: 15,

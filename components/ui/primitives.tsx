@@ -61,15 +61,16 @@ function faceFor(
   weight: keyof typeof Type.family | undefined,
   numeric: boolean,
 ): string {
-  if (variant === 'display' || variant === 'title') {
-    return weight === 'extrabold' || weight === 'bold' ? Type.display.medium : Type.display.light;
-  }
   // Every figure is monospace, whatever size it is printed at. This is the
   // single rule that makes columns of money line up and stops a dashboard
   // reading like a consumer app.
   if (numeric) {
+    if (variant === 'display' || variant === 'title') {
+      return weight === 'extrabold' || weight === 'bold' ? Type.display.medium : Type.display.light;
+    }
     return weight === 'extrabold' || weight === 'bold' ? Type.display.medium : Type.display.regular;
   }
+  if (variant === 'display' || variant === 'title') return Type.brand;
   if (variant === 'label') {
     return weight === 'regular' ? Type.mono.regular : Type.mono.medium;
   }
@@ -95,9 +96,9 @@ export function Txt({
     // an instrument. Figures are tracked slightly in so long amounts stay tight.
     letterSpacing:
       variant === 'display'
-        ? 2.4
+        ? numeric ? 0 : 3
         : variant === 'title'
-          ? 1.8
+          ? numeric ? 0 : 2
           : variant === 'label'
             ? 1.4
             : numeric
@@ -110,18 +111,18 @@ export function Txt({
       variant === 'display'
         ? 32
         : variant === 'title'
-          ? 24
+          ? 28
           : variant === 'heading'
             ? 24
             : variant === 'body'
-              ? 20
+              ? 22
               : variant === 'small'
                 ? 20
                 : variant === 'micro'
                   ? 16
                   : 16,
     textTransform:
-      variant === 'label' || variant === 'display' || variant === 'title' ? 'uppercase' : undefined,
+      variant === 'label' || ((variant === 'display' || variant === 'title') && !numeric) ? 'uppercase' : undefined,
     textAlign: center ? 'center' : undefined,
   };
 
