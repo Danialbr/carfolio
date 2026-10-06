@@ -1,45 +1,71 @@
 <style id="azl-css">
-.azl{position:fixed;inset:0;z-index:2147483000;pointer-events:none;overflow:hidden;background:radial-gradient(120% 80% at 50% 110%,rgba(240,138,93,.0),rgba(4,6,11,0) 60%);transition:background .7s ease,opacity .6s ease}
-.azl.go{background:radial-gradient(120% 80% at 50% 110%,rgba(240,138,93,.45),rgba(4,6,11,.97) 60%)}
-.azl.hold{background:#04060B}
-.azl .sp{position:absolute;inset:-50% 0;opacity:0;background:repeating-linear-gradient(90deg,transparent 0 23px,rgba(255,255,255,.18) 23px 24px,transparent 24px 61px),repeating-linear-gradient(180deg,transparent 0 40px,rgba(4,6,11,.95) 40px 140px);transition:opacity .5s .35s}
-.azl.go .sp{opacity:1;animation:azsp .35s linear infinite}
+.azl{position:fixed;inset:0;z-index:2147483000;pointer-events:none;overflow:hidden;background:rgba(4,6,11,0);transition:background .8s ease,opacity .7s ease}
+.azl.go,.azl.hold{background:#04060B}
+.azl .glow{position:absolute;inset:0;background:radial-gradient(120% 70% at 50% 110%,rgba(240,138,93,.35),transparent 60%);opacity:0;transition:opacity .8s ease}
+.azl.go .glow{opacity:1}.azl.hold .glow{opacity:0}
+.azl .sp{position:absolute;inset:-50% 0;opacity:0;background:repeating-linear-gradient(90deg,transparent 0 23px,rgba(255,255,255,.14) 23px 24px,transparent 24px 61px),repeating-linear-gradient(180deg,transparent 0 40px,rgba(4,6,11,.95) 40px 140px);transition:opacity .6s ease .3s}
+.azl.go .sp{opacity:1;animation:azsp .4s linear infinite}
+.azl.landing .sp{opacity:0;transition:opacity 1s ease}
 @keyframes azsp{to{transform:translateY(140px)}}
-.azl .rk{position:absolute;left:50%;bottom:-160px;width:84px;transform:translateX(-50%);transition:bottom 1.35s cubic-bezier(.6,0,.8,.3) .2s}
+.azl .rk{position:absolute;left:50%;bottom:-160px;width:84px;transform:translateX(-50%);transition:bottom 1.15s cubic-bezier(.55,0,.75,.25) .15s}
 .azl.go .rk{bottom:120%}
-.azl .rk svg{width:84px;height:130px;display:block;filter:drop-shadow(0 0 18px rgba(255,170,90,.6))}
-.azl .fl{transform-origin:50% 0;animation:azfl .08s ease-in-out infinite alternate}
+.azl .rk2{position:absolute;left:50%;top:-180px;width:84px;transform:translateX(-50%);opacity:0}
+.azl.landing .rk2{opacity:1;top:calc(60% - 132px);transition:top 1.15s cubic-bezier(.1,.7,.2,1)}
+.azl.logo .rk2{opacity:0;transform:translateX(-50%) translateY(-14px);transition:opacity .5s ease,transform .6s ease}
+.azl svg{width:84px;height:130px;display:block;filter:drop-shadow(0 0 18px rgba(255,170,90,.55))}
+.azl .fl{transform-origin:50% 0;animation:azfl .08s ease-in-out infinite alternate;transition:opacity .45s ease}
+.azl.landed .rk2 .fl{opacity:0}
 @keyframes azfl{to{transform:scaleY(1.35) scaleX(.85)}}
-.azl .tx{position:absolute;left:0;right:0;top:44%;text-align:center;font:800 13px/1.4 -apple-system,system-ui,sans-serif;letter-spacing:.32em;color:#F3D58A;opacity:0;transform:translateY(8px);transition:opacity .4s .2s,transform .5s .2s}
+.azl .pad{position:absolute;left:50%;top:60%;width:170px;height:26px;margin:-13px 0 0 -85px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,190,120,.55),rgba(255,140,60,.15) 60%,transparent);opacity:0;transform:scale(.4);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.1,.7,.2,1)}
+.azl.landing .pad{opacity:1;transform:scale(1)}
+.azl.logo .pad{opacity:0;transition:opacity .5s}
+.azl .puff{position:absolute;left:50%;top:60%;width:240px;height:60px;margin:-30px 0 0 -120px;border-radius:50%;background:radial-gradient(closest-side,rgba(230,220,210,.45),transparent);opacity:0;transform:scale(.3)}
+.azl.landed .puff{animation:azpuff .9s ease-out forwards}
+@keyframes azpuff{0%{opacity:.8;transform:scale(.3)}100%{opacity:0;transform:scale(1.7,1.3)}}
+.azl .tx{position:absolute;left:0;right:0;top:30%;text-align:center;font:800 13px/1.4 -apple-system,system-ui,sans-serif;letter-spacing:.32em;color:#F3D58A;opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .5s ease}
 .azl .tx b{display:block;font-size:22px;letter-spacing:.12em;color:#fff;margin-top:6px}
-.azl.go .tx{opacity:1;transform:none}
+.azl.go .tx{opacity:1;transform:none}.azl.swap .tx{opacity:0}.azl.logo .tx{opacity:0}
+.azl .lg{position:absolute;left:50%;top:46%;display:flex;flex-direction:column;align-items:center;gap:18px;opacity:0;transform:translate(-50%,-50%) scale(.86);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+.azl .lg img{width:112px;height:112px;border-radius:26px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 0 50px rgba(200,170,110,.25)}
+.azl .lg span{font:700 15px -apple-system,system-ui,sans-serif;letter-spacing:.42em;padding-left:.42em;color:#fff;opacity:.92}
+.azl.logo .lg{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .azl.out{opacity:0}
-.azl.land{background:rgba(4,6,11,.97);transition:opacity .8s ease .2s}.azl.land.out{opacity:0}
-.azl.land .rk{bottom:auto;top:-170px;transition:top .9s cubic-bezier(.2,.7,.3,1)}.azl.land.in .rk{top:38%}
 #azframe{position:fixed;top:0;left:0;width:100%;height:100%;border:0;z-index:2147480000;background:#04060B;display:none}
 </style>
 <script>
 (function(){
  var RK='<svg viewBox="0 0 84 130"><defs><linearGradient id="azb" x1="0" x2="1"><stop offset="0" stop-color="#dfe5ee"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#c7cfdb"/></linearGradient></defs><g class="fl"><path d="M32 96 Q42 136 52 96Z" fill="#FFB347"/><path d="M36 96 Q42 122 48 96Z" fill="#FFF3C4"/></g><path d="M42 4 C58 18 62 40 60 70 L56 92 H28 L24 70 C22 40 26 18 42 4Z" fill="url(#azb)"/><path d="M42 4 C50 11 55 20 57 30 H27 C29 20 34 11 42 4Z" fill="#C8AA6E"/><circle cx="42" cy="50" r="7" fill="#0AC8B9" stroke="#0d1424" stroke-width="3"/><path d="M26 70 L12 90 L26 88Z M58 70 L72 90 L58 88Z" fill="#E2483B"/><rect x="30" y="90" width="24" height="7" rx="2" fill="#2b2f3a"/></svg>';
- function el(cls,html){var o=document.createElement('div');o.className='azl '+cls;o.innerHTML='<div class="sp"></div><div class="rk">'+RK+'</div>'+(html||'');document.body.appendChild(o);return o}
+ function el(cls,html){var o=document.createElement('div');o.className='azl '+cls;o.innerHTML='<div class="glow"></div><div class="sp"></div><div class="pad"></div><div class="puff"></div><div class="rk">'+RK+'</div><div class="rk2">'+RK+'</div>'+(html||'');document.body.appendChild(o);return o}
  function raf2(f){requestAnimationFrame(function(){requestAnimationFrame(f)})}
  var framed=false;try{framed=window.top!==window&&!!window.top.__azShell}catch(e){}
  var isHome=!framed&&window.top===window&&/\/Orbit\/(index\.html)?$/i.test(location.pathname);
 
  /* ---- the shell: Orbit's window hosts Arizona and Carfolio, so the screen is always the full screen ---- */
  if(isHome){
-  var fr=null;
+  var fr=null,busy=false;
   window.__azInsets=function(){var d=document.createElement('div');d.style.cssText='position:fixed;visibility:hidden;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)';document.body.appendChild(d);var c=getComputedStyle(d),r={t:c.paddingTop,r:c.paddingRight,b:c.paddingBottom,l:c.paddingLeft};d.remove();return r};
   var frame=function(){if(!fr){fr=document.createElement('iframe');fr.id='azframe';fr.title='Arizona';document.body.appendChild(fr)}return fr};
   var isOrbit=function(u){return u.origin===location.origin&&u.pathname.replace(/index\.html$/i,'')===location.pathname.replace(/index\.html$/i,'')};
   var show=function(url,cb){var u=new URL(url,location.href),done=false,fin=function(){if(done)return;done=true;cb&&cb(u)};
    if(isOrbit(u)){if(fr){fr.style.display='none';fr.src='about:blank'}document.documentElement.style.overflow='';document.body.style.overflow='';fin();return}
-   var f=frame();f.onload=fin;setTimeout(fin,5000);f.src=u.href;f.style.display='block';document.documentElement.style.overflow='hidden';document.body.style.overflow='hidden'};
+   var f=frame();f.onload=fin;setTimeout(fin,6000);f.src=u.href;f.style.display='block';document.documentElement.style.overflow='hidden';document.body.style.overflow='hidden'};
   window.__azShell={show:show};
-  window.azLaunch=function(url,to){var o=el('','<div class="tx">DESPEGANDO A<b>'+(to||'')+'</b></div>');raf2(function(){o.classList.add('go')});try{navigator.vibrate&&navigator.vibrate(30)}catch(e){}
-   setTimeout(function(){o.classList.add('hold');show(url,function(u){
-     if(/\/carfolio\//i.test(u.pathname)){setTimeout(function(){o.classList.add('out');setTimeout(function(){o.remove()},700)},150);return}
-     o.remove();var l=el('land');raf2(function(){l.classList.add('in');setTimeout(function(){l.classList.add('out')},750);setTimeout(function(){l.remove()},1800)})})},1500)};
+  /* One trip, in order: take off → land → the destination's logo → the app. */
+  window.azLaunch=function(url,to){if(busy)return;busy=true;
+   var u=new URL(url,location.href),kind=isOrbit(u)?'orbit':/\/carfolio\//i.test(u.pathname)?'cf':'az';
+   var LOGO={orbit:['icon-512.png','ORBIT'],az:['arizona/apple-touch-icon.png','ARIZONA']}[kind];
+   var o=el('','<div class="tx">DESPEGANDO A<b>'+(to||'')+'</b></div>'+(LOGO?'<div class="lg"><img src="'+LOGO[0]+'" alt=""><span>'+LOGO[1]+'</span></div>':''));
+   var loaded=false,landed=false,after=[];var when=function(){if(loaded&&landed){var f=after;after=[];f.forEach(function(x){x()})}};
+   raf2(function(){o.classList.add('go')});try{navigator.vibrate&&navigator.vibrate(25)}catch(e){}
+   setTimeout(function(){o.classList.add('hold');window.__azArriving=kind==='cf';show(url,function(){loaded=true;when()})},1250);
+   setTimeout(function(){o.classList.add('swap')},1300);
+   setTimeout(function(){var t=o.querySelector('.tx');if(t)t.innerHTML='LLEGANDO A<b>'+(to||'')+'</b>';o.classList.remove('swap');o.classList.add('landing')},1450);
+   setTimeout(function(){o.classList.add('landed');try{navigator.vibrate&&navigator.vibrate(15)}catch(e){}},2600);
+   var finish=function(){o.classList.add('out');setTimeout(function(){o.remove();busy=false},750)};
+   setTimeout(function(){landed=true;
+    if(kind==='cf'){after.push(function(){o.classList.add('logo');try{fr.contentWindow.dispatchEvent(new Event('az-arrived'))}catch(e){}window.__azArriving=false;setTimeout(finish,250)})}
+    else{after.push(function(){o.classList.add('logo');setTimeout(finish,1250)})}
+    when()},2950)};
   var start=function(){var s=window.__azStart;if(s){window.__azStart=null;show(s)}};
   if(document.body)start();else document.addEventListener('DOMContentLoaded',start);
  }
@@ -49,9 +75,9 @@
  }
  /* ---- opened on its own (a browser tab): travel by navigation ---- */
  else{
-  window.azLaunch=function(url,to){var o=el('','<div class="tx">DESPEGANDO A<b>'+(to||'')+'</b></div>');try{sessionStorage.setItem('az.land','1')}catch(e){}raf2(function(){o.classList.add('go')});setTimeout(function(){location.href=url},1500)};
+  window.azLaunch=function(url,to){var o=el('','<div class="tx">DESPEGANDO A<b>'+(to||'')+'</b></div>');try{sessionStorage.setItem('az.land','1')}catch(e){}raf2(function(){o.classList.add('go')});setTimeout(function(){location.href=url},1400)};
   var land=function(){var f;try{f=sessionStorage.getItem('az.land');sessionStorage.removeItem('az.land')}catch(e){}if(!f||document.getElementById('cf-splash'))return;
-   var o=el('land');raf2(function(){o.classList.add('in');setTimeout(function(){o.classList.add('out')},750);setTimeout(function(){o.remove()},1800)})};
+   var o=el('hold');raf2(function(){o.classList.add('landing');setTimeout(function(){o.classList.add('landed')},1150);setTimeout(function(){o.classList.add('out')},1500);setTimeout(function(){o.remove()},2300)})};
   if(document.body)land();else document.addEventListener('DOMContentLoaded',land);
  }
  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-launch]');if(!a)return;e.preventDefault();e.stopPropagation();azLaunch(a.getAttribute('href')||a.dataset.href,a.dataset.launch)},true);

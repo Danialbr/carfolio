@@ -13,22 +13,27 @@
 #cf-splash.park::before{opacity:0}
 #cf-splash::before{content:"";position:absolute;inset:0;background:radial-gradient(110% 70% at 50% 60%,#1a1236 0%,#06040d 60%,#000 100%);transition:opacity .7s ease .15s}
 #cf-splash.park{background:none}
-.cfs-lines{position:absolute;inset:0 -50%;background:repeating-linear-gradient(90deg,transparent 0 70px,rgba(196,181,253,.14) 70px 72px,transparent 72px 160px);mask-image:linear-gradient(180deg,transparent 30%,#000 48%,#000 62%,transparent 75%);-webkit-mask-image:linear-gradient(180deg,transparent 30%,#000 48%,#000 62%,transparent 75%);animation:cfsl .28s linear infinite, cfsslow 2.2s cubic-bezier(.3,.6,.4,1) forwards}
+.cfs-lines{position:absolute;inset:0 -50%;background:repeating-linear-gradient(90deg,transparent 0 70px,rgba(196,181,253,.14) 70px 72px,transparent 72px 160px);mask-image:linear-gradient(180deg,transparent 30%,#000 48%,#000 62%,transparent 75%);-webkit-mask-image:linear-gradient(180deg,transparent 30%,#000 48%,#000 62%,transparent 75%)}
+#cf-splash.run .cfs-lines{animation:cfsl .28s linear infinite, cfsslow 2.2s cubic-bezier(.3,.6,.4,1) forwards}
 @keyframes cfsl{to{transform:translateX(160px)}}
 @keyframes cfsslow{to{opacity:.15}}
 .cfs-road{position:absolute;left:0;right:0;top:calc(50% + 46px);height:2px;background:linear-gradient(90deg,transparent,rgba(167,139,250,.5),transparent)}
-.cfs-car{position:relative;width:250px;transform:translateX(120vw);animation:cfsin 2.2s cubic-bezier(.12,.75,.22,1) .15s forwards}
-.cfs-car img{display:block;width:100%;filter:drop-shadow(0 0 22px rgba(167,139,250,.75));transform-origin:30% 90%;animation:cfsbrake .5s ease-out 2.05s both}
+.cfs-car{position:relative;width:250px;transform:translateX(120vw)}
+#cf-splash.run .cfs-car{animation:cfsin 2.1s cubic-bezier(.16,.72,.2,1) .1s forwards}
+.cfs-car img{display:block;width:100%;filter:drop-shadow(0 0 22px rgba(167,139,250,.75));transform-origin:30% 90%}
+#cf-splash.run .cfs-car img{animation:cfsbrake .5s ease-out 2.05s both}
 @keyframes cfsin{to{transform:translateX(0)}}
 @keyframes cfsbrake{0%{transform:rotate(0)}40%{transform:rotate(-1.8deg) translateX(-3px)}100%{transform:rotate(0)}}
-.cfs-name{position:relative;margin-top:26px;font:600 26px/1 'Rajdhani','Barlow Condensed',-apple-system,system-ui,sans-serif;letter-spacing:.42em;padding-left:.42em;color:#fff;opacity:0;animation:cfsfade .7s ease 1.9s forwards}
-.cfs-sub{position:relative;margin-top:10px;font:500 12px -apple-system,system-ui,sans-serif;letter-spacing:.08em;color:#8f86b3;opacity:0;animation:cfsfade .7s ease 2.1s forwards}
+.cfs-name{position:relative;margin-top:26px;font:600 26px/1 'Rajdhani','Barlow Condensed',-apple-system,system-ui,sans-serif;letter-spacing:.42em;padding-left:.42em;color:#fff;opacity:0}
+#cf-splash.run .cfs-name{animation:cfsfade .7s ease 1.9s forwards}
+.cfs-sub{position:relative;margin-top:10px;font:500 12px -apple-system,system-ui,sans-serif;letter-spacing:.08em;color:#8f86b3;opacity:0}
+#cf-splash.run .cfs-sub{animation:cfsfade .7s ease 2.1s forwards}
 @keyframes cfsfade{to{opacity:1}}
 </style>
 <script>
-(function(){var t0=Date.now(),done=false;
+(function(){var t0=Date.now(),done=false,ready=false,running=false,sp=document.getElementById('cf-splash');function run(){if(running)return;running=true;t0=Date.now();sp.classList.add('run');if(ready){ready=false;go()}}var arriving=false;try{arriving=window.top!==window&&!!window.top.__azArriving}catch(e){}if(arriving){window.addEventListener('az-arrived',run);setTimeout(run,8000)}else run();
  function finish(s){s.style.transition='opacity .5s';s.style.opacity='0';setTimeout(function(){s.remove()},550)}
- function go(){if(done)return;done=true;var w=Math.max(0,2900-(Date.now()-t0));setTimeout(function(){var s=document.getElementById('cf-splash');if(!s)return;
+ function go(){if(!running){ready=true;return}if(done)return;done=true;var w=Math.max(0,2900-(Date.now()-t0));setTimeout(function(){var s=document.getElementById('cf-splash');if(!s)return;
   var img=document.getElementById('cfs-img'),tgt=document.querySelector('[data-testid="cf-logo"]');
   if(!tgt||!img){finish(s);return}
   var a=img.getBoundingClientRect(),b=tgt.getBoundingClientRect();if(!b.width){finish(s);return}

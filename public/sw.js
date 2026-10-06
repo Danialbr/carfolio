@@ -11,7 +11,7 @@
  * background so a redeploy is picked up on the next launch rather than never.
  */
 
-const CACHE_VERSION = 'carfolio-v7';
+const CACHE_VERSION = 'carfolio-v8';
 
 // Everything needed to open with no network at all. The rest of the bundle is
 // added to the cache as it is requested.
