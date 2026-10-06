@@ -1,0 +1,346 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`business report matches its snapshot 1`] = `
+"<!doctype html><html><head><meta charset="utf-8">
+<title>Business summary 2026 — Carfolio</title><style>
+  @page { margin: 44px 40px; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #14181C; font-size: 11.5px; line-height: 1.5; margin: 0;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .masthead { border-bottom: 2.5px solid #14181C; padding-bottom: 12px; margin-bottom: 22px;
+    display: flex; justify-content: space-between; align-items: flex-end; }
+  .brand { font-size: 19px; font-weight: 800; letter-spacing: -0.4px; }
+  .brand span { font-weight: 400; color: #6B7783; }
+  .issued { font-size: 9.5px; color: #6B7783; text-align: right; line-height: 1.45; }
+  h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin: 0 0 4px; }
+  .sub { font-size: 11.5px; color: #55606B; margin: 0 0 20px; }
+  h2 { font-size: 9.5px; font-weight: 700; letter-spacing: 1.1px; text-transform: uppercase;
+    color: #6B7783; margin: 24px 0 8px; padding-bottom: 5px; border-bottom: 1px solid #D9DEE3; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 5.5px 0; vertical-align: top; }
+  td.r { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.line td { border-bottom: 1px solid #EDF0F3; }
+  tr.total td { border-top: 1.5px solid #14181C; font-weight: 800; font-size: 13px; padding-top: 8px; }
+  tr.sub-total td { border-top: 1px solid #C7CED5; font-weight: 700; }
+  .muted { color: #6B7783; }
+  .tiny { font-size: 9.5px; color: #6B7783; }
+  .headline { border: 1.5px solid #14181C; border-radius: 6px; padding: 14px 16px; margin: 18px 0 6px; }
+  .headline .label { font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase; color: #6B7783; }
+  .headline .value { font-size: 27px; font-weight: 800; letter-spacing: -0.8px; margin-top: 2px;
+    font-variant-numeric: tabular-nums; }
+  .headline .meta { font-size: 10px; color: #55606B; margin-top: 5px; }
+  .principal { background: #F6F3EA; border: 1px solid #C9B98C; border-radius: 5px;
+    padding: 11px 13px; margin: 10px 0; }
+  .grid { display: flex; gap: 10px; margin: 14px 0; }
+  .tile { flex: 1; border: 1px solid #D9DEE3; border-radius: 5px; padding: 10px 11px; }
+  .tile .label { font-size: 8.5px; letter-spacing: 0.8px; text-transform: uppercase; color: #6B7783; }
+  .tile .value { font-size: 15px; font-weight: 800; margin-top: 3px; font-variant-numeric: tabular-nums; }
+  .pill { display: inline-block; border: 1px solid #A9B3BD; border-radius: 3px;
+    padding: 1.5px 6px; font-size: 8.5px; font-weight: 700; letter-spacing: 0.6px;
+    text-transform: uppercase; margin-right: 5px; }
+  .note { background: #F5F7F9; border-left: 2.5px solid #A9B3BD; padding: 9px 12px;
+    margin: 12px 0; font-size: 10.5px; color: #37414B; }
+  footer { margin-top: 30px; padding-top: 10px; border-top: 1px solid #D9DEE3;
+    font-size: 9px; color: #8B959F; display: flex; justify-content: space-between; }
+</style></head><body>
+<div class="masthead">
+  <div class="brand">Carfolio<span> · Vehicle Investment Report</span></div>
+  <div class="issued">Issued June 1, 2026<br>Prepared by Daniel</div>
+</div>
+
+  <h1>Business summary</h1>
+  <p class="sub">2026 year to date, with all-time performance</p>
+
+  <div class="grid">
+    <div class="tile"><div class="label">Gross profit 2026</div><div class="value">+$3,000.00</div></div>
+    <div class="tile"><div class="label">Vehicles sold</div><div class="value">1</div></div>
+    <div class="tile"><div class="label">Avg ROI</div><div class="value">28.4%</div></div>
+    <div class="tile"><div class="label">Avg days</div><div class="value">37</div></div>
+  </div>
+
+  <h2>Capital position</h2>
+  <div class="principal">
+    <table>
+      <tr>
+        <td><strong>Protected capital</strong>
+          <div class="tiny">Principal. Not increased by profit, not reduced by distributions.</div>
+        </td>
+        <td class="r"><strong>$30,000.00</strong></td>
+      </tr>
+    </table>
+  </div>
+  <table>
+    <tr class="line"><td>Available to invest</td><td class="r">$32,250.00</td></tr>
+    <tr class="line"><td>Deployed in vehicles</td><td class="r">$0.00</td></tr>
+    <tr class="line"><td>Held as inventory</td><td class="r">$0.00</td></tr>
+    <tr class="line"><td>Retained in the business</td><td class="r">+$750.00</td></tr>
+    <tr class="line"><td>Cumulative reinvestment</td><td class="r">$750.00</td></tr>
+    <tr class="line"><td>Total distributions</td><td class="r">$750.00</td></tr>
+    <tr class="line"><td>Owed to Fernando</td><td class="r">$1,500.00</td></tr>
+  </table>
+
+  <h2>2026 — business</h2>
+  <table>
+    <tr class="line"><td>Vehicles purchased</td><td class="r">1</td></tr>
+    <tr class="line"><td>Vehicles sold</td><td class="r">1</td></tr>
+    <tr class="line"><td>Total investment</td><td class="r">$10,550.00</td></tr>
+    <tr class="line"><td>Total sales</td><td class="r">$13,550.00</td></tr>
+    <tr class="line"><td>Average profit</td><td class="r">+$3,000.00</td></tr>
+    <tr class="line"><td>Average ROI</td><td class="r">28.4%</td></tr>
+    <tr class="line"><td>Average days to sell</td><td class="r">37 days</td></tr>
+    <tr class="total"><td>Gross profit</td><td class="r">+$3,000.00</td></tr>
+  </table>
+
+  <h2>2026 — Myself</h2>
+  <table>
+    <tr class="line"><td>Vehicles sold</td><td class="r">0</td></tr>
+    <tr class="line"><td>Investment</td><td class="r">$0.00</td></tr>
+    <tr class="line"><td>ROI</td><td class="r">—</td></tr>
+    <tr class="sub-total"><td>Profit (100% Daniel)</td><td class="r">$0.00</td></tr>
+  </table>
+
+  <h2>2026 — Associated</h2>
+  <table>
+    <tr class="line"><td>Vehicles sold</td><td class="r">1</td></tr>
+    <tr class="line"><td>Investment</td><td class="r">$10,550.00</td></tr>
+    <tr class="line"><td>ROI</td><td class="r">28.4%</td></tr>
+    <tr class="line"><td>Total associated profit</td><td class="r">+$3,000.00</td></tr>
+    <tr class="line"><td>Daniel — 50%</td><td class="r">+$1,500.00</td></tr>
+    <tr class="sub-total"><td>Fernando — 50%</td><td class="r">+$1,500.00</td></tr>
+  </table>
+
+  <h2>Fernando — running balance</h2>
+  <table>
+    <tr class="line"><td>Profit share, all time</td><td class="r">+$1,500.00</td></tr>
+    <tr class="line"><td>Expenses he paid</td><td class="r">$0.00</td></tr>
+    <tr class="line"><td>Payments made to him</td><td class="r">$-0.00</td></tr>
+    <tr class="total"><td>Owed to Fernando</td><td class="r">$1,500.00</td></tr>
+  </table>
+
+  <h2>All-time performance</h2>
+  <table>
+    <tr class="line"><td>Vehicles sold</td><td class="r">1</td></tr>
+    <tr class="line"><td>Average purchase price</td><td class="r">$8,000.00</td></tr>
+    <tr class="line"><td>Average additional investment</td><td class="r">$2,550.00</td></tr>
+    <tr class="line"><td>Average total investment</td><td class="r">$10,550.00</td></tr>
+    <tr class="line"><td>Average sale price</td><td class="r">$13,550.00</td></tr>
+    <tr class="line"><td>Average gross profit</td><td class="r">+$3,000.00</td></tr>
+    <tr class="line"><td>Average ROI per vehicle</td><td class="r">28.4%</td></tr>
+    <tr class="line"><td>Return on money invested</td><td class="r">28.4%</td></tr>
+    <tr class="line"><td>Average days to sell</td><td class="r">37 days</td></tr>
+    <tr class="line"><td>Best profit — 2018 Toyota Camry</td><td class="r">+$3,000.00</td></tr>
+    <tr class="line"><td>Worst result — 2018 Toyota Camry</td><td class="r">+$3,000.00</td></tr>
+    <tr class="total"><td>Gross profit, all time</td><td class="r">+$3,000.00</td></tr>
+  </table>
+
+  <h2>Vehicle history — sold (1)</h2>
+  <table>
+    <tr><td class="tiny">VEHICLE</td><td class="r tiny">INVESTED</td><td class="r tiny">SOLD</td><td class="r tiny">PROFIT</td><td class="r tiny">ROI</td><td class="r tiny">DAYS</td></tr>
+    <tr class="line">
+        <td>2018 Toyota Camry SE
+          <div class="tiny">Associated · sold February 16, 2026</div>
+        </td>
+        <td class="r">$10,550.00</td>
+        <td class="r">$13,550.00</td>
+        <td class="r"><strong>+$3,000.00</strong></td>
+        <td class="r muted">28.4%</td>
+        <td class="r muted">37d</td>
+      </tr>
+  </table>
+
+  <h2>In the garage (0)</h2>
+  <table>
+    <tr><td class="tiny">VEHICLE</td><td class="r tiny">PURCHASE</td><td class="r tiny">ADDITIONAL</td><td class="r tiny">TOTAL</td><td class="r tiny">DAYS</td></tr>
+    <tr class="line"><td colspan="5" class="muted">The garage is empty.</td></tr>
+  </table>
+  
+<footer>
+  <span>Carfolio — generated June 1, 2026</span>
+  <span>Figures reflect records at the time of generation</span>
+</footer>
+</body></html>"
+`;
+
+exports[`vehicle report matches its snapshot 1`] = `
+"<!doctype html><html><head><meta charset="utf-8">
+<title>2018 Toyota Camry SE — Carfolio</title><style>
+  @page { margin: 44px 40px; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #14181C; font-size: 11.5px; line-height: 1.5; margin: 0;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .masthead { border-bottom: 2.5px solid #14181C; padding-bottom: 12px; margin-bottom: 22px;
+    display: flex; justify-content: space-between; align-items: flex-end; }
+  .brand { font-size: 19px; font-weight: 800; letter-spacing: -0.4px; }
+  .brand span { font-weight: 400; color: #6B7783; }
+  .issued { font-size: 9.5px; color: #6B7783; text-align: right; line-height: 1.45; }
+  h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin: 0 0 4px; }
+  .sub { font-size: 11.5px; color: #55606B; margin: 0 0 20px; }
+  h2 { font-size: 9.5px; font-weight: 700; letter-spacing: 1.1px; text-transform: uppercase;
+    color: #6B7783; margin: 24px 0 8px; padding-bottom: 5px; border-bottom: 1px solid #D9DEE3; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 5.5px 0; vertical-align: top; }
+  td.r { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.line td { border-bottom: 1px solid #EDF0F3; }
+  tr.total td { border-top: 1.5px solid #14181C; font-weight: 800; font-size: 13px; padding-top: 8px; }
+  tr.sub-total td { border-top: 1px solid #C7CED5; font-weight: 700; }
+  .muted { color: #6B7783; }
+  .tiny { font-size: 9.5px; color: #6B7783; }
+  .headline { border: 1.5px solid #14181C; border-radius: 6px; padding: 14px 16px; margin: 18px 0 6px; }
+  .headline .label { font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase; color: #6B7783; }
+  .headline .value { font-size: 27px; font-weight: 800; letter-spacing: -0.8px; margin-top: 2px;
+    font-variant-numeric: tabular-nums; }
+  .headline .meta { font-size: 10px; color: #55606B; margin-top: 5px; }
+  .principal { background: #F6F3EA; border: 1px solid #C9B98C; border-radius: 5px;
+    padding: 11px 13px; margin: 10px 0; }
+  .grid { display: flex; gap: 10px; margin: 14px 0; }
+  .tile { flex: 1; border: 1px solid #D9DEE3; border-radius: 5px; padding: 10px 11px; }
+  .tile .label { font-size: 8.5px; letter-spacing: 0.8px; text-transform: uppercase; color: #6B7783; }
+  .tile .value { font-size: 15px; font-weight: 800; margin-top: 3px; font-variant-numeric: tabular-nums; }
+  .pill { display: inline-block; border: 1px solid #A9B3BD; border-radius: 3px;
+    padding: 1.5px 6px; font-size: 8.5px; font-weight: 700; letter-spacing: 0.6px;
+    text-transform: uppercase; margin-right: 5px; }
+  .note { background: #F5F7F9; border-left: 2.5px solid #A9B3BD; padding: 9px 12px;
+    margin: 12px 0; font-size: 10.5px; color: #37414B; }
+  footer { margin-top: 30px; padding-top: 10px; border-top: 1px solid #D9DEE3;
+    font-size: 9px; color: #8B959F; display: flex; justify-content: space-between; }
+</style></head><body>
+<div class="masthead">
+  <div class="brand">Carfolio<span> · Vehicle Investment Report</span></div>
+  <div class="issued">Issued June 1, 2026<br>Prepared by Daniel</div>
+</div>
+
+  <h1>2018 Toyota Camry SE</h1>
+  <p class="sub">
+    <span class="pill">Associated</span>
+    <span class="pill">Sold</span>
+    VIN 1HGCM82633A004352
+  </p>
+
+  <div class="headline">
+        <div class="label">Gross profit</div>
+        <div class="value">+$3,000.00</div>
+        <div class="meta">ROI 28.4% · held 37 days · sold February 16, 2026</div>
+      </div>
+
+  <h2>Vehicle</h2>
+  <table>
+    <tr class="line"><td>Year / Make / Model / Trim</td><td class="r">2018 Toyota Camry SE</td></tr>
+    <tr class="line"><td>VIN</td><td class="r">1HGCM82633A004352</td></tr>
+    <tr class="line"><td>Mileage at purchase</td><td class="r">84,120 mi</td></tr>
+    <tr class="line"><td>Mileage at sale</td><td class="r">88,400 mi</td></tr>
+    <tr class="line"><td>Purchase date</td><td class="r">January 10, 2026</td></tr>
+    <tr class="line"><td>Sale date</td><td class="r">February 16, 2026</td></tr>
+    <tr class="line"><td>Days held</td><td class="r">37 days</td></tr>
+  </table>
+
+  <h2>Investment breakdown</h2>
+  <table>
+    <tr class="line">
+      <td><strong>Purchase price</strong></td>
+      <td class="r muted">January 10, 2026</td>
+      <td class="r muted">Daniel</td>
+      <td class="r"><strong>$8,000.00</strong></td>
+    </tr>
+    <tr><td colspan="4" class="tiny" style="padding-top:12px">ADDITIONAL INVESTMENT</td></tr>
+    <tr class="line">
+        <td>Mechanical Repair</td>
+        <td class="r muted">January 20, 2026</td>
+        <td class="r muted">Daniel</td>
+        <td class="r">$850.00</td>
+      </tr><tr class="line">
+        <td>Auction Fee</td>
+        <td class="r muted">January 20, 2026</td>
+        <td class="r muted">Daniel</td>
+        <td class="r">$600.00</td>
+      </tr><tr class="line">
+        <td>Transportation</td>
+        <td class="r muted">January 20, 2026</td>
+        <td class="r muted">Daniel</td>
+        <td class="r">$400.00</td>
+      </tr><tr class="line">
+        <td>Title</td>
+        <td class="r muted">January 20, 2026</td>
+        <td class="r muted">Daniel</td>
+        <td class="r">$250.00</td>
+      </tr><tr class="line">
+        <td>Parts</td>
+        <td class="r muted">January 20, 2026</td>
+        <td class="r muted">Daniel</td>
+        <td class="r">$200.00</td>
+      </tr><tr class="line">
+        <td>Detailing</td>
+        <td class="r muted">January 20, 2026</td>
+        <td class="r muted">Daniel</td>
+        <td class="r">$150.00</td>
+      </tr><tr class="line">
+        <td>Gasoline</td>
+        <td class="r muted">January 20, 2026</td>
+        <td class="r muted">Daniel</td>
+        <td class="r">$100.00</td>
+      </tr>
+    <tr class="sub-total">
+      <td colspan="3">Additional investment</td>
+      <td class="r">$2,550.00</td>
+    </tr>
+    <tr class="total">
+      <td colspan="3">Total invested</td>
+      <td class="r">$10,550.00</td>
+    </tr>
+  </table>
+
+  <h2>Sale</h2>
+    <table>
+      <tr class="line"><td>Sale date</td><td class="r">February 16, 2026</td></tr>
+      <tr class="line"><td>Buyer</td><td class="r">A. Buyer</td></tr>
+      <tr class="line"><td>Mileage at sale</td><td class="r">88,400 mi</td></tr>
+      <tr class="line"><td>Sale price</td><td class="r">$13,550.00</td></tr>
+      <tr class="line"><td class="muted">Less total invested</td><td class="r muted">-$10,550.00</td></tr>
+      <tr class="total"><td>Gross profit</td><td class="r">+$3,000.00</td></tr>
+    </table>
+
+    <h2>Profit allocation</h2>
+    <table>
+      <tr class="line">
+        <td><strong>Daniel</strong><div class="tiny">50% share</div></td>
+        <td class="r"><strong>+$1,500.00</strong></td>
+      </tr>
+      <tr class="line">
+              <td><strong>Fernando</strong><div class="tiny">50% share</div></td>
+              <td class="r"><strong>+$1,500.00</strong></td>
+            </tr>
+      <tr><td colspan="2" class="tiny" style="padding-top:10px">OF DANIEL'S SHARE</td></tr>
+             <tr class="line"><td class="muted">Reinvested in the business</td><td class="r">$750.00</td></tr>
+             <tr class="line"><td class="muted">Distributed</td><td class="r">$750.00</td></tr>
+    </table>
+    <div class="note">Fernando's share is calculated on the gross profit after every cost
+             above. It is his in full at the point of sale and is not affected by how Daniel
+             chooses to allocate his own half.</div>
+  <h2>Fernando — entries for this vehicle</h2>
+      <table>
+        <tr class="line">
+              <td>Profit share
+                <div class="tiny">Profit share</div></td>
+              <td class="r muted">February 16, 2026</td>
+              <td class="r">+$1,500.00</td>
+            </tr>
+        <tr class="sub-total">
+          <td colspan="2">Net for this vehicle</td>
+          <td class="r">+$1,500.00</td>
+        </tr>
+      </table>
+
+  
+  <h2>Sale notes</h2><p>Sold at asking price</p>
+  
+<footer>
+  <span>Carfolio — generated June 1, 2026</span>
+  <span>Figures reflect records at the time of generation</span>
+</footer>
+</body></html>"
+`;

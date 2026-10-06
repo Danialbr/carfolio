@@ -1,0 +1,3 @@
+# Every route is rendered by the app itself, so any path must serve index.html.
+# Without this, reloading on /garage or opening a bookmarked screen 404s.
+/*  /index.html  200

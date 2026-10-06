@@ -1,0 +1,39 @@
+CARFOLIO — versión instalable en el iPhone
+==========================================
+
+Esta carpeta ES la app. No hay que compilar nada.
+
+SUBIRLA (una sola vez, desde tu PC)
+-----------------------------------
+1. Entra a  https://app.netlify.com/drop
+2. Arrastra ESTA CARPETA COMPLETA (carfolio-web) a la página.
+   La carpeta, no el zip.
+3. Te da una dirección tipo https://algo-algo.netlify.app  — cópiala.
+
+INSTALARLA EN EL IPHONE
+-----------------------
+1. Abre esa dirección en SAFARI (tiene que ser Safari).
+2. Botón de compartir → "Añadir a pantalla de inicio" → "Añadir".
+
+Queda el ícono en tu pantalla. Ábrela desde ahí, no desde Safari.
+
+SIN INTERNET
+------------
+Funciona todo: carros, gastos, ventas, analytics, PDF. Los datos viven
+en el teléfono. Solo la primera vez necesitas señal, para descargarla.
+
+EL RESPALDO — IMPORTANTE
+------------------------
+Los datos viven en el almacenamiento del navegador:
+  - Si borras el ícono, se borran los datos.
+  - No entran en el respaldo de iCloud del teléfono.
+
+Por eso, después de cada venta:
+  Más → Backup → Exportar → "Guardar en Archivos" → iCloud Drive
+
+Ese archivo es tu seguro. Toma diez segundos.
+
+SI ALGO SALE MAL
+----------------
+Abre la dirección otra vez, vuelve a añadirla a la pantalla de inicio,
+y luego Más → Backup → Importar con tu archivo. Vuelves donde estabas.

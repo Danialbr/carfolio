@@ -1,0 +1,11 @@
+node_modules/
+.expo/
+dist/
+web-build/
+*.log
+.DS_Store
+expo-env.d.ts
+coverage/
+# Never commit data dumps — a backup JSON in a repo is a leak waiting to happen.
+backups/
+*.carfolio.json
