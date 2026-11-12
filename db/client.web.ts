@@ -33,6 +33,7 @@ import { drizzle } from 'drizzle-orm/sql-js';
 import type { BaseSQLiteDatabase } from 'drizzle-orm/sqlite-core';
 import initSqlJs, { type Database as SqlJsDatabase } from 'sql.js';
 
+import { nowTimestamp } from '../domain/dates';
 import { schema } from './schema';
 import { WEB_MIGRATIONS } from './webMigrations';
 
@@ -230,7 +231,7 @@ function writeWorldSummary(db: SqlJsDatabase): void {
       inventoryItems: one(`SELECT COUNT(*) AS n FROM inventory_items WHERE deleted_at IS NULL AND quantity > 0`),
       inventoryValueCents: one(`SELECT SUM(quantity * unit_cost_cents) AS n FROM inventory_items WHERE deleted_at IS NULL`),
     };
-    localStorage.setItem('carfolio.world', JSON.stringify({ v: 2, at: new Date().toISOString(), vehicles, sales, expenses, totals }));
+    localStorage.setItem('carfolio.world', JSON.stringify({ v: 2, at: nowTimestamp(), vehicles, sales, expenses, totals }));
   } catch {
     // The world is a nice-to-have; never let it break a save.
   }

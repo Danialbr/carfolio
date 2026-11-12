@@ -32,10 +32,9 @@ import {
 import { DataRow, Money, Percent } from '../../components/ui/money';
 import { OptionSheet } from '../../components/ui/Sheet';
 import { ScreenHeader } from '../../components/domain/ScreenHeader';
-import { StatusPill, TypePill } from '../../components/domain/VehicleCard';
+import { HoloCar, StatusPill, TypePill } from '../../components/domain/VehicleCard';
 import { ExpenseSheet } from '../../components/domain/ExpenseSheet';
 import { ColorPicker } from '../../components/domain/ColorPicker';
-import { HoloCar } from '../../components/domain/VehicleCard';
 import { confirm, notify } from '../../components/ui/dialog';
 import { useApp, selectVehicle, withRefresh } from '../../state/store';
 import { deleteExpense, reverseSale, setVehicleColor, setVehicleStatus } from '../../db/operations';

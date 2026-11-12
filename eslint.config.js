@@ -4,7 +4,8 @@ const prettier = require('eslint-config-prettier');
 module.exports = [
   ...expoConfig,
   prettier,
-  { ignores: ['node_modules/**', 'drizzle/**', '.expo/**', 'coverage/**', 'dist/**'] },
+  // scout/ is a standalone Apify actor with its own dependencies; it is not part of the app bundle.
+  { ignores: ['node_modules/**', 'drizzle/**', '.expo/**', 'coverage/**', 'dist/**', 'scout/**'] },
   {
     rules: {
       'no-console': ['warn', { allow: ['warn', 'error'] }],
@@ -44,4 +45,5 @@ module.exports = [
       ],
     },
   },
+  { files: ['scripts/**'], rules: { 'no-console': 'off' } },
 ];
